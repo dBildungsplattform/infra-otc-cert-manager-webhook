@@ -2,8 +2,8 @@
 
 This project provides a cert-manager webhook for the [Open Telekom Cloud (OTC)](https://open-telekom-cloud.com/de) DNS. 
 
-This webhook is available on GitHub [hpi-schul-cloud /
-infra-otc-cert-manager-webhook](https://github.com/hpi-schul-cloud/infra-otc-cert-manager-webhook). It is written in Go and uses the Go API of the OTC [gophertelekomcloud](https://github.com/opentelekomcloud/gophertelekomcloud). The gophertelekomcloud is part of the Open Telekom Cloud (T-Systems, Deutsche Telekom) project available on GitHub https://github.com/opentelekomcloud.
+This webhook is available on GitHub [dBildungsplattform /
+infra-otc-cert-manager-webhook](https://github.com/dBildungsplattform/infra-otc-cert-manager-webhook). It is written in Go and uses the Go API of the OTC [gophertelekomcloud](https://github.com/opentelekomcloud/gophertelekomcloud). The gophertelekomcloud is part of the Open Telekom Cloud (T-Systems, Deutsche Telekom) project available on GitHub https://github.com/opentelekomcloud.
 
 ## Requirements
 
@@ -19,7 +19,7 @@ The following table lists the configurable parameters of the infra-otc-cert-mana
 
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
-| `groupName` | The groupName  is used to identify your company or business unit that created this webhook. For example, this may be "acme.mycompany.com". This name will need to be referenced in each Issuer's `webhook` stanza to inform cert-manager of where to send ChallengePayload resources in order to solve the DNS01 challenge. This group name should be **unique**, hence using your own company's domain here is recommended. | `infra-otc-cert-manager-webhook.hpi-schul-cloud.github.com` |
+| `groupName` | The groupName  is used to identify your company or business unit that created this webhook. For example, this may be "acme.mycompany.com". This name will need to be referenced in each Issuer's `webhook` stanza to inform cert-manager of where to send ChallengePayload resources in order to solve the DNS01 challenge. This group name should be **unique**, hence using your own company's domain here is recommended. | `infra-otc-cert-manager-webhook.dBildungsplattform.github.com` |
 | `credentialsSecretRef` | The name of secret where the credentials to access the OTCDNS are stored. | `otcdns-credentials` |
 | `certManager.namespace` | Namespace where cert-manager is deployed to. | `cert-manager` |
 | `certManager.serviceAccountName` | Service account of cert-manager installation. | `cert-manager` |
@@ -75,7 +75,7 @@ data:
 Install the webhook
 
 ```bash
-helm repo add otcdnswebhook https://hpi-schul-cloud.github.io/infra-otc-cert-manager-webhook/
+helm repo add otcdnswebhook https://dBildungsplattform.github.io/infra-otc-cert-manager-webhook/
 helm repo update
 helm install --namespace cert-manager otcdns-release otcdnswebhook/infra-otc-cert-manager-webhook
 ```
@@ -114,7 +114,7 @@ spec:
     solvers:
       - dns01:
           webhook:
-            groupName: infra-otc-cert-manager-webhook.hpi-schul-cloud.github.com
+            groupName: infra-otc-cert-manager-webhook.dBildungsplattform.github.com
             solverName: otcdns
             config:
               authURL: "https://iam.eu-de.otc.t-systems.com:443/v3"

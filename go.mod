@@ -1,4 +1,4 @@
-module github.com/hpi-schul-cloud/infra-otc-cert-manager-webhook
+module github.com/dBildungsplattform/infra-otc-cert-manager-webhook
 
 //module local
 
@@ -135,4 +135,4 @@ require (
 	sigs.k8s.io/yaml v1.4.0 // indirect
 )
 
-// replace github.com/hpi-schul-cloud/infra-otc-cert-manager-webhook/otcdns => ../otcdns
+// replace github.com/dBildungsplattform/infra-otc-cert-manager-webhook/otcdns => ../otcdns

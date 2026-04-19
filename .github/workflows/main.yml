@@ -22,7 +22,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            schulcloud/infra-otc-cert-manager-webhook
+            dBildungsplattform/infra-otc-cert-manager-webhook
           # generate Docker tags based on the following events/attributes
           tags: |
             type=sha        
@@ -38,4 +38,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: schulcloud/infra-otc-cert-manager-webhook:latest,${{ steps.meta.outputs.tags }}
+          tags: dBildungsplattform/infra-otc-cert-manager-webhook:latest,${{ steps.meta.outputs.tags }}

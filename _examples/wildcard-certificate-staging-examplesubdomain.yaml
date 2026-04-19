@@ -4,10 +4,10 @@ metadata:
   name: wildcard-certificate-staging-examplesubdomain
   namespace: examplesubdomain
 spec:
-  # commonName: *.examplesubdomain.hpi-schul-cloud.dev
+  # commonName: *.examplesubdomain.dBildungsplattform.dev
   dnsNames:
-  - '*.examplesubdomain.hpi-schul-cloud.dev'
-  - '*.dev.examplesubdomain.hpi-schul-cloud.dev'
+  - '*.examplesubdomain.dBildungsplattform.dev'
+  - '*.dev.examplesubdomain.dBildungsplattform.dev'
   issuerRef:
     kind: ClusterIssuer
     name: sc-cert-manager-clusterissuer-letsencrypt-staging-otcdns
