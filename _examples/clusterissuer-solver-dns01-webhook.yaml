@@ -17,7 +17,7 @@ spec:
     solvers:
       - dns01:
           webhook:
-            # See main.go > GroupName. github.com/infra-otc-cert-manager-webhook/infra-otc-cert-manager-webhook
+            # See main.go > GroupName. github.com/dbildungsplattform/infra-otc-cert-manager-webhook
             groupName: infra-otc-cert-manager-webhook.dbildungsplattform.github.com
             # See solver.go > Name.
             solverName: otcdns
