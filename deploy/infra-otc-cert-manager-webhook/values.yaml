@@ -15,7 +15,7 @@ certManager:
   serviceAccountName: cert-manager
 
 image:
-  repository: schulcloud/infra-otc-cert-manager-webhook
+  repository: dBildungsplattform/infra-otc-cert-manager-webhook
   tag: 1.0.1
   pullPolicy: IfNotPresent
   # pullSecrets:
