@@ -17,36 +17,26 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      # https://github.com/actions/checkout 
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd #v6.0.2
         with:
           fetch-depth: 0
-
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-      
-      # 
-      # https://github.com/Azure/setup-helm
-      # Acceptable values for version are latest or any semantic version string like v2.16.7 Use this action in workflow to define which version of helm will be used.
-      #
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"      
       - name: Install Helm
-        uses: azure/setup-helm@v1
+        uses: azure/setup-helm@dda3372f752e03dde6b3237bc9431cdc2f7a02a2 #v5.0.0 
         with:
           version: 3.4.0 #renovate: datasource=github-releases depName=helm/helm
 
       #- name: Add external Helm repos
       #  run: helm repo add bitnami https://charts.bitnami.com/bitnami
-
       # No chart dependencies to build. So left out here.
 
-      # https://github.com/helm/chart-releaser-action
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.2.1
+        uses: helm/chart-releaser-action@cae68fefc6b5f367a0275617c9f83181ba54714f #v1.7.0
         with:
-          version: v1.2.1
           charts_dir: deploy
           # config: 
           # charts_repo_url: https://<owner>.github.io/<project>
