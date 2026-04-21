@@ -3,9 +3,9 @@ name: Build infra-otc Docker Image on Push to GHCR
 on:
   push:
     branches-ignore:
-      - master
-    #paths:
-    #  - 'Dockerfile'
+      - main
+    paths:
+      - 'Dockerfile'
 
 jobs:
   build_image_on_push:

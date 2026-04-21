@@ -3,10 +3,10 @@ name: Release Charts
 on:
   push:
     branches:
-      #- main
-      - DBP-2194-infra-otc-cert-manager-webhook-übergabefähig-machen
-    #paths:
-    #  - 'deploy/**'
+      - main
+      
+    paths:
+      - 'deploy/**'
   workflow_dispatch:
 
 jobs:
