@@ -15,7 +15,7 @@ certManager:
   serviceAccountName: cert-manager
 
 image:
-  repository: dBildungsplattform/infra-otc-cert-manager-webhook
+  repository: ghcr.io/dbildungsplattform/infra-otc-cert-manager-webhook
   tag: latest
   pullPolicy: IfNotPresent
   # pullSecrets:
