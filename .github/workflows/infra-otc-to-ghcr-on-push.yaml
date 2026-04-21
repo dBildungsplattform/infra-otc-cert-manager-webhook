@@ -3,9 +3,11 @@ name: Build infra-otc Docker Image on Push to GHCR
 on:
   push:
     branches-ignore:
-      - main
-    #paths:
-    #  - 'Dockerfile'
+      - master
+    paths:
+      - 'Dockerfile'
+      - '.github/workflows/build-push-ghcr.yaml'
+      - '.github/workflows/infra-otc-to-ghcr-on-push.yaml'
 
 jobs:
   build_image_on_push:
@@ -17,4 +19,4 @@ jobs:
     uses: ./.github/workflows/build-push-ghcr.yaml
     with:
       image_name: "infra-otc-cert-manager-webhook"
-      context: "Dockerfile"
+      context: "./"
