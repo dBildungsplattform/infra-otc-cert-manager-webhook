@@ -12,6 +12,11 @@ on:
         required: false
         default: "./"
         type: string
+      file:
+        description: "Path to Dockerfile"
+        required: false
+        default: "./Dockerfile"
+        type: string
 
 jobs:
   skip_ci:
@@ -54,33 +59,25 @@ jobs:
             type=sha,prefix=sha-
             type=ref,event=branch,suffix=-latest
 
-      - name: Create lowercase image ref
-        id: lower-repo
-        env:
-          repo_ref: ghcr.io/${{ github.repository_owner }}/${{ inputs.image_name }}:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}
-          image_ref: ghcr.io/${{ github.repository_owner }}/${{ inputs.image_name }}
-        run: |
-          echo "repository=${repo_ref@L}" >> $GITHUB_OUTPUT
-          echo "image=${image_ref@L}" >> $GITHUB_OUTPUT
-
       - name: Build and push
         id: docker_build_push
         uses: docker/build-push-action@v6
         with:
           context: ${{ inputs.context }}
+          file: ${{ inputs.file }}
           platforms: linux/amd64
-          load: true
+          push: true
           tags: ${{ steps.docker_meta_img.outputs.tags }}
           labels: ${{ steps.docker_meta_img.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Export Docker image as tar
         run: |
           mkdir -p ${{ github.workspace }}/clamavscan/container_fs
           chmod -R 777 ${{ github.workspace }}/clamavscan
 
-          IMAGE_REF="ghcr.io/${{ github.repository_owner }}/${{ inputs.image_name }}:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}"
-          IMAGE_REF="${IMAGE_REF,,}"
-
+          IMAGE_REF="$(echo "${{ steps.docker_meta_img.outputs.tags }}" | head -n 1)"
           echo "Using image: $IMAGE_REF"
 
           docker pull "$IMAGE_REF"
@@ -89,7 +86,7 @@ jobs:
           tar -xf ${{ github.workspace }}/clamavscan/container_fs.tar -C ${{ github.workspace }}/clamavscan/container_fs
           docker rm temp_scan_container
           rm -f ${{ github.workspace }}/clamavscan/container_fs.tar
-      
+
       - name: Run ClamAV scan
         run: |
           docker run --rm -v ${{ github.workspace }}/clamavscan:/scan clamav/clamav:latest freshclam --datadir=/scan

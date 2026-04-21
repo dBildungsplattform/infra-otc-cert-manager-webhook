@@ -6,8 +6,11 @@ on:
       - master
     paths:
       - 'Dockerfile'
-      - '.github/workflows/build-push-ghcr.yaml'
-      - '.github/workflows/infra-otc-to-ghcr-on-push.yaml'
+      - 'go.mod'
+      - 'go.sum'
+      - 'main.go'
+      - 'main_test.go'
+      - 'otcdns/**'
 
 jobs:
   build_image_on_push:
@@ -20,3 +23,4 @@ jobs:
     with:
       image_name: "infra-otc-cert-manager-webhook"
       context: "./"
+      file: "./Dockerfile"
