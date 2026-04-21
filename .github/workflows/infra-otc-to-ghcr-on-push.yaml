@@ -6,11 +6,6 @@ on:
       - master
     #paths:
     #  - 'Dockerfile'
-    #  - 'go.mod'
-    #  - 'go.sum'
-    #  - 'main.go'
-    #  - 'main_test.go'
-    #  - 'otcdns/**'
 
 jobs:
   build_image_on_push:
