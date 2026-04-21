@@ -2,8 +2,8 @@ name: Build infra-otc on push
 
 on:
   push:
-    paths:
-      - "infra-otc-cert-manager-webhook/"
+    #paths:
+    #  - "deployinfra-otc-cert-manager-webhook/"
 
 jobs:
   build_image:
