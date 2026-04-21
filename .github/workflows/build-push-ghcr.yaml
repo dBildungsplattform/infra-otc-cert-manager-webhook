@@ -77,11 +77,18 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/clamavscan/container_fs
           chmod -R 777 ${{ github.workspace }}/clamavscan
-          docker create --name temp_scan_container ${{ steps.lower-repo.outputs.image }}
+
+          IMAGE_REF="ghcr.io/${{ github.repository_owner }}/${{ inputs.image_name }}:${{ env.DOCKER_METADATA_OUTPUT_VERSION }}"
+          IMAGE_REF="${IMAGE_REF,,}"
+
+          echo "Using image: $IMAGE_REF"
+
+          docker pull "$IMAGE_REF"
+          docker create --name temp_scan_container "$IMAGE_REF"
           docker export temp_scan_container -o ${{ github.workspace }}/clamavscan/container_fs.tar
           tar -xf ${{ github.workspace }}/clamavscan/container_fs.tar -C ${{ github.workspace }}/clamavscan/container_fs
           docker rm temp_scan_container
-          rm -rf ${{ github.workspace }}/clamavscan/container_fs.tar
+          rm -f ${{ github.workspace }}/clamavscan/container_fs.tar
       
       - name: Run ClamAV scan
         run: |
