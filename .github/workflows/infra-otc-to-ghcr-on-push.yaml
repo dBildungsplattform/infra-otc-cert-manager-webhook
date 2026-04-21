@@ -1,0 +1,16 @@
+name: Build infra-otc on push
+
+on:
+  push:
+    paths:
+      - "infra-otc-cert-manager-webhook/"
+
+jobs:
+  build_image:
+    uses: ./.github/workflows/build-push-ghcr.yaml
+    permissions:
+      packages: write
+      contents: read
+    with:
+      image_name: infra-otc-cert-manager-webhook
+      context: ./infra-otc-cert-manager-webhook/
