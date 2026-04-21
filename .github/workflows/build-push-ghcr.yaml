@@ -77,12 +77,12 @@ jobs:
         run: |
           mkdir -p ${{ github.workspace }}/clamavscan/container_fs
           chmod -R 777 ${{ github.workspace }}/clamavscan
-          docker create --name temp_scan_container ${{ steps.lower-repo.outputs.image }}:latest
+          docker pull "${{ steps.lower-repo.outputs.repository }}"
+          docker create --name temp_scan_container "${{ steps.lower-repo.outputs.repository }}"
           docker export temp_scan_container -o ${{ github.workspace }}/clamavscan/container_fs.tar
           tar -xf ${{ github.workspace }}/clamavscan/container_fs.tar -C ${{ github.workspace }}/clamavscan/container_fs
           docker rm temp_scan_container
-          rm -rf ${{ github.workspace }}/clamavscan/container_fs.tar
-
+          rm -f ${{ github.workspace }}/clamavscan/container_fs.tar
       - name: Run ClamAV scan
         run: |
           docker run --rm -v ${{ github.workspace }}/clamavscan:/scan clamav/clamav:latest freshclam --datadir=/scan
