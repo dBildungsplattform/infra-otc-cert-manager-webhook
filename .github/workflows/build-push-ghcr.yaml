@@ -63,14 +63,13 @@ jobs:
           echo "repository=${repo_ref@L}" >> $GITHUB_OUTPUT
           echo "image=${image_ref@L}" >> $GITHUB_OUTPUT
 
-      - name: Build and push ${{ github.repository }}
+      - name: Build and push
         id: docker_build_push
         uses: docker/build-push-action@v6
         with:
-          builder: ${{ steps.buildx.outputs.name }}
           context: ${{ inputs.context }}
           platforms: linux/amd64
-          push: true
+          load: true
           tags: ${{ steps.docker_meta_img.outputs.tags }}
           labels: ${{ steps.docker_meta_img.outputs.labels }}
 
