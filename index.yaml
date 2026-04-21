@@ -25,4 +25,16 @@ entries:
     urls:
     - https://github.com/dBildungsplattform/infra-otc-cert-manager-webhook/releases/download/infra-otc-cert-manager-webhook-1.0.1/infra-otc-cert-manager-webhook-1.0.1.tgz
     version: 1.0.1
-generated: "2026-04-20T11:50:58.994608033Z"
+  - apiVersion: v1
+    appVersion: 0.0.1
+    created: "2026-04-21T09:51:28.310879679Z"
+    description: A Helm chart for the infra-otc-cert-manager-webhook
+    digest: dab30880269e1f671acdec28fe98a493c0cfdf74dbb272a9ea99d4463fd5c44e
+    maintainers:
+    - name: Markus Bartels
+      url: https://github.com/dBildungsplattform/infra-otc-cert-manager-webhook
+    name: infra-otc-cert-manager-webhook
+    urls:
+    - https://github.com/dBildungsplattform/infra-otc-cert-manager-webhook/releases/download/infra-otc-cert-manager-webhook-0.0.1/infra-otc-cert-manager-webhook-0.0.1.tgz
+    version: 0.0.1
+generated: "2026-04-21T09:51:28.310894617Z"
