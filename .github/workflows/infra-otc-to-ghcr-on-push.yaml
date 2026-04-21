@@ -13,4 +13,4 @@ jobs:
       contents: read
     with:
       image_name: infra-otc-cert-manager-webhook
-      context: ./infra-otc-cert-manager-webhook/
+      context: deploy/infra-otc-cert-manager-webhook/
