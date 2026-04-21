@@ -1,16 +1,20 @@
-name: Build infra-otc on tag push
+name: Build infra-otc Docker Image on Push to GHCR
 
 on:
   push:
-    tags:
-      - 'v*.*.*'
+    branches-ignore:
+      - main
+    #paths:
+    #  - 'deploy/infra-otc-cert-manager-webhook/**'
 
 jobs:
-  build_image:
+  build_image_on_push:
     permissions:
       packages: write
+      security-events: write
+      actions: read
       contents: read
-    uses: ./.github/workflows/build-push-ghcr.yaml
+    uses: ./.github/workflows/imagetoghcr-on-push.yaml
     with:
-      image_name: infra-otc-cert-manager-webhook
-      context: deploy/infra-otc-cert-manager-webhook/
+      image_name: "infra-otc-cert-manager-webhook"
+      context: "./deploy/infra-otc-cert-manager-webhook/"
