@@ -12,7 +12,7 @@ import (
 
 // Allows to overwrite the default value with a custom value.
 func getTestZone() string {
-	var testZone string = "dBildungsplattform.dev."
+	var testZone string = "dbildungsplattform.dev."
 	if os.Getenv("TEST_ZONE_NAME") == "" {
 		return testZone
 	} else {

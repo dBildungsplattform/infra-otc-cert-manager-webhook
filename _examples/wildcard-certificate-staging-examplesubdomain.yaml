@@ -6,8 +6,8 @@ metadata:
 spec:
   # commonName: *.examplesubdomain.dBildungsplattform.dev
   dnsNames:
-  - '*.examplesubdomain.dBildungsplattform.dev'
-  - '*.dev.examplesubdomain.dBildungsplattform.dev'
+  - '*.examplesubdomain.dbildungsplattform.dev'
+  - '*.dev.examplesubdomain.dbildungsplattform.dev'
   issuerRef:
     kind: ClusterIssuer
     name: sc-cert-manager-clusterissuer-letsencrypt-staging-otcdns
