@@ -7,10 +7,8 @@ on:
     #paths:
     #  - 'deploy/infra-otc-cert-manager-webhook'
       
-workflow_dispatch:
-permissions:
-  contents: write
-
+  workflow_dispatch:
+      
 jobs:
   release:
     runs-on: ubuntu-latest
