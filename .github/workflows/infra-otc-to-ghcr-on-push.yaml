@@ -4,8 +4,8 @@ on:
   push:
     branches-ignore:
       - master
-    paths:
-      - 'Dockerfile'
+    #paths:
+    #  - 'Dockerfile'
 
 jobs:
   build_image_on_push:
