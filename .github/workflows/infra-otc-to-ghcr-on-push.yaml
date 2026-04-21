@@ -5,7 +5,7 @@ on:
     branches-ignore:
       - main
     #paths:
-    #  - './Dockerfile'
+    #  - 'Dockerfile'
 
 jobs:
   build_image_on_push:
@@ -17,4 +17,4 @@ jobs:
     uses: ./.github/workflows/build-push-ghcr.yaml
     with:
       image_name: "infra-otc-cert-manager-webhook"
-      context: "./Dockerfile"
+      context: "Dockerfile"
