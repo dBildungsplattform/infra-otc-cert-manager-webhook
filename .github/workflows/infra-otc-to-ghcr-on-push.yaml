@@ -14,7 +14,7 @@ jobs:
       security-events: write
       actions: read
       contents: read
-    uses: ./.github/workflows/imagetoghcr-on-push.yaml
+    uses: ./.github/workflows/build-push-ghcr.yaml
     with:
       image_name: "infra-otc-cert-manager-webhook"
       context: "./deploy/infra-otc-cert-manager-webhook/"
