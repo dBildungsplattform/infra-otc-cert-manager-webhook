@@ -6,8 +6,8 @@ on:
       #- main
       - DBP-2194-infra-otc-cert-manager-webhook-übergabefähig-machen
      
-    #paths:
-    #  - 'deploy/**'
+    paths:
+      - 'deploy/**'
   workflow_dispatch:
 
 jobs:
