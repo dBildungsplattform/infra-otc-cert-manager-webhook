@@ -3,9 +3,10 @@ name: Build infra-otc Docker Image on Push to GHCR
 on:
   push:
     branches-ignore:
-      - main
-    paths:
-      - 'Dockerfile'
+      #- main
+      - DBP-2194-infra-otc-cert-manager-webhook-übergabefähig-machen
+    #paths:
+    #  - 'Dockerfile'
 
 jobs:
   build_image_on_push:
