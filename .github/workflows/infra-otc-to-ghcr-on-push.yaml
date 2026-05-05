@@ -5,8 +5,8 @@ on:
     branches-ignore:
       #- main
       - DBP-2194-infra-otc-cert-manager-webhook-übergabefähig-machen
-    #paths:
-    #  - 'Dockerfile'
+    paths:
+      - 'Dockerfile'
 
 jobs:
   build_image_on_push:
