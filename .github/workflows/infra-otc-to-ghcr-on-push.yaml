@@ -1,15 +1,27 @@
-name: Build infra-otc Docker Image on Push to GHCR
+name: Build infra-otc Docker Image on Tag to GHCR
 
 on:
   push:
-    branches-ignore:
-      #- main
-      - DBP-2194-infra-otc-cert-manager-webhook-übergabefähig-machen
-    paths:
-      - 'Dockerfile'
+    tags:
+      - "infra-otc-cert-manager-webhook-*"
+  workflow_dispatch:
 
 jobs:
-  build_image_on_push:
+  extract_image_tag:
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.version.outputs.image_tag }}
+    steps:
+      - name: Extract image tag from git tag
+        id: version
+        run: |
+          TAG_NAME="${GITHUB_REF_NAME}"
+          IMAGE_TAG="${TAG_NAME#infra-otc-cert-manager-webhook-}"
+          echo "image_tag=${IMAGE_TAG}" >> "$GITHUB_OUTPUT"
+          echo "Image tag: ${IMAGE_TAG}"
+
+  build_image_on_tag:
+    needs: extract_image_tag
     permissions:
       packages: write
       security-events: write
@@ -18,5 +30,6 @@ jobs:
     uses: ./.github/workflows/build-push-ghcr.yaml
     with:
       image_name: "infra-otc-cert-manager-webhook"
+      tag: ${{ needs.extract_image_tag.outputs.image_tag }}
       context: "./"
       file: "./Dockerfile"
