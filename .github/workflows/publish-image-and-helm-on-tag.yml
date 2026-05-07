@@ -29,6 +29,7 @@ jobs:
     uses: dBildungsplattform/dbp-github-workflows/.github/workflows/chart-release.yaml@7
     secrets: inherit
     with:
+      chart_path: deploy
       chart_name: infra-otc-cert-manager-webhook
       helm_chart_version_generation: specified
       image_tag_generation: specified
