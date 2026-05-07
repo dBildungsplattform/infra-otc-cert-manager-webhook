@@ -18,12 +18,12 @@ jobs:
     uses: dBildungsplattform/dbp-github-workflows/.github/workflows/image-publish-trivy.yaml@7
     with:
       image_name: "infra-otc-cert-manager-webhook"
-      run_trivy_scan: false
+      run_trivy_scan: true
       run_clamav_scan: true
       image_tag_generation: "version_git_tag"
       add_latest_tag: true
       container_registry: "ghcr.io"
-      limit-severities-for-sarif: false
+      limit-severities-for-sarif: true
 
   publish_helm:
     uses: dBildungsplattform/dbp-github-workflows/.github/workflows/chart-release.yaml@7
@@ -35,3 +35,4 @@ jobs:
       image_tag_generation: specified
       helm_chart_version: ${{ github.ref_name }}
       image_tag: ${{ github.ref_name }}
+
