@@ -5,5 +5,5 @@ name: infra-otc-cert-manager-webhook
 version: 1.0.2
 maintainers:
   - name: Markus Bartels
-    url: https://github.com/hpi-schul-cloud/infra-otc-cert-manager-webhook
+    url: https://github.com/dBildungsplattform/infra-otc-cert-manager-webhook
     

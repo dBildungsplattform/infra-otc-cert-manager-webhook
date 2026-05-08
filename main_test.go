@@ -6,13 +6,13 @@ import (
 
 	"github.com/cert-manager/cert-manager/pkg/acme/webhook"
 	dns "github.com/cert-manager/cert-manager/test/acme"
-	"github.com/hpi-schul-cloud/infra-otc-cert-manager-webhook/otcdns"
+	"github.com/dBildungsplattform/infra-otc-cert-manager-webhook/otcdns"
 	"k8s.io/klog"
 )
 
 // Allows to overwrite the default value with a custom value.
 func getTestZone() string {
-	var testZone string = "hpi-schul-cloud.dev."
+	var testZone string = "dbildungsplattform.dev."
 	if os.Getenv("TEST_ZONE_NAME") == "" {
 		return testZone
 	} else {
