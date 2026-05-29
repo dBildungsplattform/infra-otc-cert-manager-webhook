@@ -4,5 +4,5 @@ description: A Helm chart for the infra-otc-cert-manager-webhook
 name: infra-otc-cert-manager-webhook
 version: 1.0.3        # Chart version is appVersion
 maintainers:
-  - name: devops@dbildungscloud.de
+  - name: devops@dbildungsplattform.de
     url: https://github.com/dBildungsplattform/infra-otc-cert-manager-webhook
