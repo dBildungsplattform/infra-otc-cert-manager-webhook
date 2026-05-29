@@ -5,7 +5,7 @@ module github.com/dBildungsplattform/infra-otc-cert-manager-webhook
 // https://golang.org/doc/devel/release.html
 // https://golang.org/doc/go1.13 >> 03.09.2019
 // https://golang.org/doc/go1.16 >> 16.02.2021
-go 1.22.3
+go 1.26.3
 
 require (
 	github.com/cert-manager/cert-manager v1.14.5
