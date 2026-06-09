@@ -179,7 +179,7 @@ The cert-manager will detect it and start the issuing process. See [Troubleshoot
 
 ### Requirements
 
-- [go](https://golang.org/) >= 1.22.3
+- [go](https://golang.org/) >= 1.26.3
 
 ### Configure the tests
 
